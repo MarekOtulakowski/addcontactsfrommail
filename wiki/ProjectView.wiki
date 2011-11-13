@@ -10,6 +10,7 @@ https://lh3.googleusercontent.com/-8U4Vvoy_Pl4/Tr8eN_aEybI/AAAAAAAAALY/ftC9LeZ_T
   * Select source folder
   * Click "Add contacts"
   * Optionaly Abort import or Clear list result
+  * Go to program project homepage click to link in the right bottom corner
 
 = System Requirements =
   * Windows XP - 7
