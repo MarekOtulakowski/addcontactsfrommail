@@ -925,7 +925,10 @@ namespace addcontactsfrommail
         /// <param name="e">event</param>
         private void LL_projectWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://addcontactsfrommail.codeplex.com/");
+            //old project webpage
+            //System.Diagnostics.Process.Start("http://addcontactsfrommail.codeplex.com/");
+
+            System.Diagnostics.Process.Start("http://code.google.com/p/addcontactsfrommail/");
         }
 
         /// <summary>

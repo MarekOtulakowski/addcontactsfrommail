@@ -9,9 +9,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("simple tools to add contacts from mail")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MarekOtulakowski")]
-[assembly: AssemblyProduct("http://addcontactsfrommail.codeplex.com/")]
+[assembly: AssemblyProduct("http://code.google.com/p/addcontactsfrommail/")]
 [assembly: AssemblyCopyright("Copyright ©  MarekOtulakowski 2011")]
-[assembly: AssemblyTrademark("http://addcontactsfrommail.codeplex.com/")]
+[assembly: AssemblyTrademark("http://code.google.com/p/addcontactsfrommail/")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.3")]
-[assembly: AssemblyFileVersion("1.0.0.3")]
+[assembly: AssemblyVersion("1.0.0.4")]
+[assembly: AssemblyFileVersion("1.0.0.4")]
