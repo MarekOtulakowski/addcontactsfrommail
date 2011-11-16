@@ -176,6 +176,71 @@ namespace addcontactsfrommail
             oContactsFolder = null;
             return listContacts;
         }
+
+        /// <summary>
+        /// Add contacts from recipients mail
+        /// </summary>
+        /// <param name="mail">MSOutlook mail object</param>
+        /// <param name="listActualContacts">list actual constacts</param>
+        private void AddContactFromRecipientsMail(MSOutlook.MailItem mail, 
+                                                  List<ContactInfo> listActualContacts)
+        {
+            MSOutlook.Recipients recipients = mail.Recipients as MSOutlook.Recipients;
+
+            foreach (MSOutlook.Recipient oRecipient in recipients)
+            {
+                ContactInfo oCon2 = listActualContacts.Find(s => s.SenderMail == oRecipient.Address);
+                if (oCon2 == null)
+                {
+                    nContact = oApp.CreateItem(MSOutlook.OlItemType.olContactItem) as MSOutlook.ContactItem;
+
+                    nContact.Email1Address = oRecipient.Address;
+                    if (oRecipient.Name != null)
+                    {
+                        string name = oRecipient.Name;
+                        name = RenameContactConditions(name);
+                        nContact.FullName = name;
+                    }
+                    else
+                    {
+                        string name = oRecipient.Address;
+                        name = RenameContactConditions(name);
+                        nContact.FullName = name;
+                    }
+                    nContact.Save();
+
+                    AddNewLineToLB_result(nContact);
+                    nContact = null;
+                }
+            }
+
+            recipients = null;
+        }
+
+        /// <summary>
+        /// Add contacts from sender mail
+        /// </summary>
+        /// <param name="mail">MSOutlook mail object</param>
+        private void AddContactFromSenderMail(MSOutlook.MailItem mail)
+        {
+            nContact.Email1Address = mail.SenderEmailAddress;
+            if (mail.SenderName != null)
+            {
+                string name = mail.SenderName;
+                name = RenameContactConditions(name);
+                nContact.FullName = name;
+            }
+            else
+            {
+                string name = mail.SenderEmailAddress;
+                name = RenameContactConditions(name);
+                nContact.FullName = name;
+            }
+            nContact.Save();
+
+            AddNewLineToLB_result(nContact);
+            nContact = null;
+        }
         
         /// <summary>
         /// Add contact from parametr folder
@@ -190,6 +255,11 @@ namespace addcontactsfrommail
             {              
                 foreach (var oMail in oFolder.Items)
                 {
+                    if (sourceEmailCount == 14)
+                    {
+                        
+                    }
+
                     ++sourceEmailCount;
                     if (!(oMail is MSOutlook.MailItem)) continue;
                     
@@ -235,24 +305,7 @@ namespace addcontactsfrommail
                         {
                             if (((MSOutlook.MailItem)oMail).SenderEmailAddress == null) continue;
                             if (((MSOutlook.MailItem)oMail).SenderEmailAddress.Trim() == string.Empty) continue;
-
-                            nContact.Email1Address = ((MSOutlook.MailItem)oMail).SenderEmailAddress;
-                            if (((MSOutlook.MailItem)oMail).SenderName != null)
-                            {
-                                string name = ((MSOutlook.MailItem)oMail).SenderName;
-                                name = RenameContactConditions(name);
-                                nContact.FullName = name;
-                            }
-                            else
-                            {
-                                string name = ((MSOutlook.MailItem)oMail).SenderEmailAddress;
-                                name = RenameContactConditions(name);
-                                nContact.FullName = name;
-                            }
-                            nContact.Save();
-
-                            AddNewLineToLB_result(nContact);
-                            nContact = null;
+                            AddContactFromSenderMail((MSOutlook.MailItem)oMail);
                         }
                         else
                         {
@@ -261,107 +314,17 @@ namespace addcontactsfrommail
                                 if (((MSOutlook.MailItem)oMail).SenderEmailAddress == null) continue;
                                 if (((MSOutlook.MailItem)oMail).SenderEmailAddress.Trim() == string.Empty) continue;
 
-                                nContact.Email1Address = ((MSOutlook.MailItem)oMail).SenderEmailAddress;
-
-                                if (((MSOutlook.MailItem)oMail).SenderName != null)
-                                {
-                                    string name = ((MSOutlook.MailItem)oMail).SenderName;
-                                    name = RenameContactConditions(name);
-                                    nContact.FullName = name;
-                                }
-                                else
-                                {
-                                    string name = ((MSOutlook.MailItem)oMail).SenderEmailAddress;
-                                    name = RenameContactConditions(name);
-                                    nContact.FullName = name;
-                                }
-                                nContact.Save();
-
-                                AddNewLineToLB_result(nContact);
+                                AddContactFromSenderMail((MSOutlook.MailItem)oMail);
                             }
                             else
-                            {
-                                MSOutlook.Recipients recipients = ((MSOutlook.MailItem)oMail).Recipients as MSOutlook.Recipients;
-                                foreach (MSOutlook.Recipient oRecipient in recipients)
-                                {
-                                    if (cancelThread) return true;
-
-                                    ContactInfo oCon2 = listActualContacts.Find(s => s.SenderMail == oRecipient.Address);
-                                    if (oCon2 == null)
-                                    {
-                                        if (nContact != null) nContact = null;
-
-                                        if (oRecipient == null) continue;
-                                        if (oRecipient.Address == null) continue;
-                                        if (oRecipient.Address.Trim() == string.Empty) continue;
-
-                                        nContact = oApp.CreateItem(MSOutlook.OlItemType.olContactItem) as MSOutlook.ContactItem;
-
-                                        nContact.Email1Address = oRecipient.Address;
-                                        if (oRecipient.Name != null)
-                                        {
-                                            string name = oRecipient.Name;
-                                            name = RenameContactConditions(name);
-                                            nContact.FullName = name;
-                                        }
-                                        else
-                                        {
-                                            string name = oRecipient.Address;
-                                            name = RenameContactConditions(name);
-                                            nContact.FullName = name;
-                                        }
-                                        nContact.Save();
-
-                                        AddNewLineToLB_result(nContact);
-                                        nContact = null;
-                                    }
-                                }
-
-                                recipients = null;
-                            }
+                                AddContactFromRecipientsMail((MSOutlook.MailItem)oMail,
+                                                             listActualContacts);
                         }
                     }
 
                     if (RB_sendFolder.Checked)
-                    {
-                        MSOutlook.Recipients recipients = ((MSOutlook.MailItem)oMail).Recipients as MSOutlook.Recipients;
-                        foreach (MSOutlook.Recipient oRecipient in recipients)
-                        {
-                            if (cancelThread) return true;
-
-                            if (oRecipient.Address == null) continue;
-                            ContactInfo oCon2 = listActualContacts.Find(s => s.SenderMail == oRecipient.Address);
-                            if (oCon2 == null)
-                            {
-                                if (oRecipient == null) continue;
-                                if (oRecipient.Address == null) continue;
-                                if (oRecipient.Address.Trim() == string.Empty) continue;
-
-                                if (nContact != null) nContact = null;
-                                nContact = oApp.CreateItem(MSOutlook.OlItemType.olContactItem) as MSOutlook.ContactItem;
-
-                                nContact.Email1Address = oRecipient.Address;
-                                if (oRecipient.Name != null)
-                                {
-                                    string name = oRecipient.Name;
-                                    name = RenameContactConditions(name);
-                                    nContact.FullName = name;
-                                }
-                                else
-                                {
-                                    string name = oRecipient.Address;
-                                    name = RenameContactConditions(name);
-                                    nContact.FullName = name;
-                                }
-                                    
-                                nContact.Save();
-
-                                AddNewLineToLB_result(nContact);
-                            }
-                        }
-
-                        recipients = null;
-                    }
+                        AddContactFromRecipientsMail((MSOutlook.MailItem)oMail,
+                                                     listActualContacts);
 
                     if (nContact != null) nContact = null;
                 }
@@ -403,6 +366,7 @@ namespace addcontactsfrommail
         public string RenameContactConditions(string name)
         {
             name = name.Replace("'", "");
+            name = name.Replace("\"", "");
 
             if (name.Contains("@"))
                 name = name.Substring(0, name.IndexOf("@"));

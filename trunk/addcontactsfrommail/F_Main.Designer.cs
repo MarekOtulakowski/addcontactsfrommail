@@ -224,7 +224,7 @@
             this.Controls.Add(this.B_addContacts);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "F_Main";
-            this.Text = "Add Contacts From Mail v.1.0.0.4";
+            this.Text = "Add Contacts From Mail v.1.0.0.5";
             this.Load += new System.EventHandler(this.F_Main_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.F_Main_FormClosing);
             this.GB_sourceMSFolder.ResumeLayout(false);
