@@ -199,6 +199,8 @@ namespace addcontactsfrommail
                             form.RenameContactConditions("jerry-Novak@gmail.com"));
             Assert.AreEqual("Natally Herman",
                             form.RenameContactConditions("NataLLY_HerMaN@example.com"));
+            Assert.AreEqual("Allan Test",
+                            form.RenameContactConditions("\"Allan Test\""));
         }
 
         /// <summary>
