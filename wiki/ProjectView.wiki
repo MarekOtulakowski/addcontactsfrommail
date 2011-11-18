@@ -15,4 +15,4 @@ https://lh3.googleusercontent.com/-8U4Vvoy_Pl4/Tr8eN_aEybI/AAAAAAAAALY/ftC9LeZ_T
 = System Requirements =
   * Windows XP - 7
   * Net Framework 3.5
-  * Microsoft Outlook 2007 
+  * Microsoft Outlook 2007 - 2010
