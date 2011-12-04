@@ -1,18 +1,18 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C# Express 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addcontactsfrommail", "addcontactsfrommail\addcontactsfrommail.csproj", "{362903ED-F1A4-40C3-9CD6-71CD70021AE6}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addcontactsfrommail", "addcontactsfrommail\addcontactsfrommail.csproj", "{BA6388DB-69AC-4DEC-99D9-B3DB9FA6D19A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{362903ED-F1A4-40C3-9CD6-71CD70021AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{362903ED-F1A4-40C3-9CD6-71CD70021AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{362903ED-F1A4-40C3-9CD6-71CD70021AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{362903ED-F1A4-40C3-9CD6-71CD70021AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6388DB-69AC-4DEC-99D9-B3DB9FA6D19A}.Debug|x86.ActiveCfg = Debug|x86
+		{BA6388DB-69AC-4DEC-99D9-B3DB9FA6D19A}.Debug|x86.Build.0 = Debug|x86
+		{BA6388DB-69AC-4DEC-99D9-B3DB9FA6D19A}.Release|x86.ActiveCfg = Release|x86
+		{BA6388DB-69AC-4DEC-99D9-B3DB9FA6D19A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
