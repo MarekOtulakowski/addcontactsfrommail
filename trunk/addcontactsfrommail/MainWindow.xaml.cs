@@ -304,10 +304,11 @@ namespace addcontactsfrommail
                                         "/" +
                                         countAllmail.ToString() +
                                         ") ";
-                        this.UIThread(() => this.LB_result.Items.Add(noInfo +
+                        AddNewItemsToLB_result(noInfo +
                             "Check for email subject: " +
-                            ((MSOutlook.MailItem)oMail).Subject));
-                        this.UIThread(() => this.LB_result.SelectedIndex = this.LB_result.Items.Count - 1);
+                            ((MSOutlook.MailItem)oMail).Subject);
+                        //this.UIThread(() => this.LB_result.SelectedIndex = this.LB_result.Items.Count - 1);
+                        SetSelectedLastLineInLB_result();
                     }
                     catch
                     {
@@ -320,8 +321,7 @@ namespace addcontactsfrommail
                         if (nContact != null) nContact = null;
                         nContact = oApp.CreateItem(MSOutlook.OlItemType.olContactItem) as MSOutlook.ContactItem;
 
-                        //if (RB_receiveFolder.Checked)
-                        if ((bool)RB_receiveFolder.IsChecked)
+                        if (IsRB_receiveFolderChecked())
                         {
                             if (((MSOutlook.MailItem)oMail).SenderEmailAddress == null) continue;
                             if (((MSOutlook.MailItem)oMail).SenderEmailAddress.Trim() == string.Empty) continue;
@@ -342,8 +342,7 @@ namespace addcontactsfrommail
                         }
                     }
 
-                    //if (RB_sendFolder.Checked)
-                    if ((bool)RB_sendFolder.IsChecked)
+                    if (IsRB_sendFolderChecked())
                         AddContactFromRecipientsMail((MSOutlook.MailItem)oMail,
                                                      listActualContacts);
 
@@ -375,8 +374,9 @@ namespace addcontactsfrommail
                              nContact.Email1DisplayName +
                              ") " +
                              nContact.Email1Address;
-            this.UIThread(() => this.LB_result.Items.Add(message));
-            this.UIThread(() => this.LB_result.SelectedIndex = this.LB_result.Items.Count - 1);
+            AddNewItemsToLB_result(message);
+            //this.UIThread(() => this.LB_result.SelectedIndex = this.LB_result.Items.Count - 1);
+            SetSelectedLastLineInLB_result();
         }
 
         /// <summary>
@@ -534,7 +534,7 @@ namespace addcontactsfrommail
         {
             if (cancelThread) return;
 
-            this.UIThread(() => this.LB_result.Items.Add("Start search contacts for folder: " + folder2.FullFolderPath));
+            AddNewItemsToLB_result("Start search contacts for folder: " + folder2.FullFolderPath);
 
             if (folder2.DefaultMessageClass == defaultNameClass)
                 AddContactsForOneFolder(folder2);
@@ -566,13 +566,13 @@ namespace addcontactsfrommail
             {
                 if (!folder.FullFolderPath.Substring(2, folder.FullFolderPath.Length - 2).Contains("\\"))
                 {
-                    this.UIThread(() => this.LB_result.Items.Add("Cannot continue becouse selected folder is root folder\nPlease select source folder again, correctly"));
+                    AddNewItemsToLB_result("Cannot continue becouse selected folder is root folder\nPlease select source folder again, correctly");
                     return false;
                 }
 
                 if (allSubFolders)
                 {
-                    this.UIThread(() => this.LB_result.Items.Add("Start search contacts for folder: " + folder.FullFolderPath));
+                    AddNewItemsToLB_result("Start search contacts for folder: " + folder.FullFolderPath);
 
                     if (folder.Folders.Count > 0)
                         AddFromFolder(folder);
@@ -581,7 +581,7 @@ namespace addcontactsfrommail
                 }
                 else
                 {
-                    this.UIThread(() => this.LB_result.Items.Add("Start search contacts for folder: " + folder.FullFolderPath));
+                    AddNewItemsToLB_result("Start search contacts for folder: " + folder.FullFolderPath);
                     AddContactsForOneFolder(folder);
                 }
 
@@ -589,7 +589,7 @@ namespace addcontactsfrommail
             }
             catch (Exception ex)
             {
-                this.UIThread(() => this.LB_result.Items.Add("Stop search contacts"));
+                AddNewItemsToLB_result("Stop search contacts");
                 if (!allSubFolders)
                 {
                     MessageBox.Show("Error AddContacts: " + ex.Message,
@@ -600,11 +600,184 @@ namespace addcontactsfrommail
                 else
                 {
                     string message = "Error AddContacts: " + ex.Message;
-                    this.UIThread(() => this.LB_result.Items.Add(message));
+                    AddNewItemsToLB_result(message);
                 }
             }
 
             return result;
+        }
+
+        //solution find on http://www.switchonthecode.com/tutorials/working-with-the-wpf-dispatcher
+        /// <summary>
+        /// Return actual CB_selectedFolderWithAllSubfolders checked state
+        /// </summary>
+        /// <returns>true if IsChecked</returns>
+        private bool IsCB_selectedFolderWithAllSubfoldersChecked()
+        {
+            bool isChecked = false;
+
+            System.Threading.Thread thread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                delegate()
+                {
+                    CB_selectedFolderWithAllSubfolders.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                        delegate()
+                        {
+                            isChecked = (bool)CB_selectedFolderWithAllSubfolders.IsChecked;
+                        }
+                    ));
+                }
+            ));
+            thread.Start();
+
+            return isChecked;
+        }
+
+        /// <summary>
+        /// Return actual RB_sendFolder checked state
+        /// </summary>
+        /// <returns>true if IsChecked</returns>
+        private bool IsRB_sendFolderChecked()
+        {
+            bool isChecked = false;
+
+            System.Threading.Thread thread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                delegate()
+                {
+                    RB_sendFolder.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                        delegate()
+                        {
+                            isChecked = (bool)RB_sendFolder.IsChecked;
+                        }
+                    ));
+                }
+            ));
+            thread.Start();
+
+            return isChecked;
+        }
+
+        /// <summary>
+        /// Return actual RB_receiveFolder checked state
+        /// </summary>
+        /// <returns>true if IsChecked</returns>
+        private bool IsRB_receiveFolderChecked()
+        {
+            bool isChecked = false;
+
+            System.Threading.Thread thread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                delegate()
+                {
+                    RB_receiveFolder.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                        delegate()
+                        {
+                            isChecked = (bool)RB_receiveFolder.IsChecked;
+                        }
+                    ));
+                }
+            ));
+            thread.Start();
+
+            return isChecked;
+        }
+
+        /// <summary>
+        /// Set actual RB_receiveFolder checked state
+        /// </summary>
+        /// <param name="isCheck">checked status</param>
+        private void SetRB_receiveFolderChecked(bool isCheck)
+        {
+            System.Threading.Thread thread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                delegate()
+                {
+                    RB_receiveFolder.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                        delegate()
+                        {
+                            RB_receiveFolder.IsChecked = isCheck;
+                        }
+                    ));
+                }
+            ));
+            thread.Start();
+        }
+
+        /// <summary>
+        /// Set actual RB_sendFolder checked state
+        /// </summary>
+        /// <param name="isCheck">checked status</param>
+        private void SetRB_sendFolderChecked(bool isCheck)
+        {
+            System.Threading.Thread thread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                delegate()
+                {
+                    RB_sendFolder.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                        delegate()
+                        {
+                            RB_sendFolder.IsChecked = isCheck;
+                        }
+                    ));
+                }
+            ));
+            thread.Start();
+        }
+
+        /// <summary>
+        /// Set selected last line in LB_result
+        /// </summary>
+        private void SetSelectedLastLineInLB_result()
+        {
+            System.Threading.Thread thread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                delegate()
+                {
+                    LB_result.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                        delegate()
+                        {
+                            LB_result.ScrollIntoView(LB_result.Items[LB_result.Items.Count - 1]);
+                        }
+                    ));
+                }
+            ));
+            thread.Start();
+        }
+
+        /// <summary>
+        /// Add new item to LB_result
+        /// </summary>
+        /// <param name="message">new item body</param>
+        private void AddNewItemsToLB_result(string message)
+        {
+            System.Threading.Thread thread = new System.Threading.Thread(
+                new System.Threading.ThreadStart(
+                delegate()
+                {
+                    LB_result.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                        delegate()
+                        {
+                            LB_result.Items.Add(message);
+                        }
+                    ));
+                }
+            ));
+            thread.Start();
         }
 
         /// <summary>
@@ -613,17 +786,16 @@ namespace addcontactsfrommail
         private void AddContact()
         {
             sourceEmailCount = 0;
-            bool allSubfolders = (bool)CB_selectedFolderWithAllSubfolders.IsChecked;
+
+            bool allSubfolders = IsCB_selectedFolderWithAllSubfoldersChecked();
             if (!allSubfolders)
                 countAllmail = folder.Items.Count;
             else
                 ReadAllFolderRecursiveTest();
 
-            if ((bool)RB_sendFolder.IsChecked)
-            //if (RB_sendFolder.Checked)
+            if (IsRB_sendFolderChecked())
                 AddContacts(allSubfolders);
-            if ((bool)RB_receiveFolder.IsChecked)
-            //else if (RB_receiveFolder.Checked)
+            if (IsRB_receiveFolderChecked())
                 AddContacts(allSubfolders);
             if (selectedFolder)
             {
@@ -648,6 +820,16 @@ namespace addcontactsfrommail
         /// <param name="e">event</param>
         private void B_addContacts_Click(object sender, RoutedEventArgs e)
         {
+            if (IsRB_receiveFolderChecked() == false &&
+                IsRB_sendFolderChecked() == false)
+            {
+                MessageBox.Show("Please first selected source folder!",
+                                "Specify source folder",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Stop);
+                return;
+            }
+
             PB_progress.Value = 0;
             BW_worker.RunWorkerAsync();
         }
@@ -669,7 +851,7 @@ namespace addcontactsfrommail
         public void SetLinesToLB_result(List<string> listLines)
         {
             foreach (string oLine in listLines)
-                LB_result.Items.Add(oLine);
+                AddNewItemsToLB_result(oLine);
         }
 
         /// <summary>
@@ -695,10 +877,10 @@ namespace addcontactsfrommail
         private void B_otherFolder_Click(object sender, RoutedEventArgs e)
         {
             bool selectedReceiveFolder = false;
-            if ((bool)RB_receiveFolder.IsChecked) selectedReceiveFolder = true;
-            if ((bool)RB_sendFolder.IsChecked) selectedReceiveFolder = false;
-            RB_sendFolder.IsChecked = false;
-            RB_receiveFolder.IsChecked = false;
+            if (IsRB_receiveFolderChecked()) selectedReceiveFolder = true;
+            if (IsRB_sendFolderChecked()) selectedReceiveFolder = false;
+            SetRB_sendFolderChecked(false);
+            SetRB_receiveFolderChecked(false);
 
             if (folder != null) folder = null;
             folder = oApp.Session.PickFolder() as MSOutlook.MAPIFolder;
@@ -756,13 +938,13 @@ namespace addcontactsfrommail
         {
             if (selectedReceiveFolder)
             {
-                RB_sendFolder.IsChecked = false;
-                RB_receiveFolder.IsChecked= true;
+                SetRB_sendFolderChecked(false);
+                SetRB_receiveFolderChecked(true);
             }
             else
             {
-                RB_sendFolder.IsChecked = true;
-                RB_receiveFolder.IsChecked = false;
+                SetRB_sendFolderChecked(true);
+                SetRB_receiveFolderChecked(false);
             }
         }
 
@@ -784,7 +966,8 @@ namespace addcontactsfrommail
         /// <param name="e">event</param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //RB_sendFolder.IsChecked = true;
+            SetRB_sendFolderChecked(true);
+            SetRB_receiveFolderChecked(false);
 
             InitializeOutlook();
 
@@ -945,6 +1128,12 @@ namespace addcontactsfrommail
         {
             System.Diagnostics.Process.Start("http://code.google.com/p/addcontactsfrommail/");
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            //LB_result.ScrollIntoView(LB_result.Items[LB_result.Items.Count - 1]);
+            //this.LB_result.SelectedIndex = this.LB_result.Items.Count - 1;
+        }
     }
 
     //from http://stackoverflow.com/questions/661561/how-to-update-gui-from-another-thread-in-c
@@ -965,11 +1154,6 @@ namespace addcontactsfrommail
             }
             else
                 code.Invoke();
-
-            //if (@this.InvokeRequired)
-            //    @this.BeginInvoke(code);
-            //else
-            //    code.Invoke();
         }
     }
 }
