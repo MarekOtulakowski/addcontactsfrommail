@@ -13,11 +13,10 @@ C:\Projects\addcontactsfrommail\addcontactsfrommail\addcontactsfrommail\obj\x86\
 C:\Projects\addcontactsfrommail\addcontactsfrommail\addcontactsfrommail\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Projects\addcontactsfrommail\addcontactsfrommail\addcontactsfrommail\obj\x86\Debug\addcontactsfrommail.exe
 C:\Projects\addcontactsfrommail\addcontactsfrommail\addcontactsfrommail\obj\x86\Debug\addcontactsfrommail.pdb
+C:\Projects\addcontactsfrommail\addcontactsfrommail\bin\Debug\addcontactsfrommail.exe.config
 C:\Projects\addcontactsfrommail\addcontactsfrommail\bin\Debug\addcontactsfrommail.exe
 C:\Projects\addcontactsfrommail\addcontactsfrommail\bin\Debug\addcontactsfrommail.pdb
-C:\Projects\addcontactsfrommail\addcontactsfrommail\bin\Debug\nunit.framework.dll
 C:\Projects\addcontactsfrommail\addcontactsfrommail\bin\Debug\WPFToolkit.dll
-C:\Projects\addcontactsfrommail\addcontactsfrommail\bin\Debug\nunit.framework.xml
 C:\Projects\addcontactsfrommail\addcontactsfrommail\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Projects\addcontactsfrommail\addcontactsfrommail\obj\x86\Debug\addcontactsfrommail.csproj.ResolveComReference.cache
 C:\Projects\addcontactsfrommail\addcontactsfrommail\obj\x86\Debug\Dialog.baml

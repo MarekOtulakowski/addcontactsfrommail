@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Projects\addcontactsfrommail\addcontactsfrommail\bin\Debug\addcontactsfrommail.exe" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-09" time="21:10:26">
+  <environment nunit-version="2.5.10.11092" clr-version="4.0.30319.239" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\SharpDevelop\4.1\bin\Tools\NUnit" machine-name="MAREK-KOMPUTER" user="Marek" user-domain="Marek-Komputer" />
+  <culture-info current-culture="pl-PL" current-uiculture="pl-PL" />
+  <test-suite type="Assembly" name="C:\Projects\addcontactsfrommail\addcontactsfrommail\bin\Debug\addcontactsfrommail.exe" executed="True" result="Failure" success="False" time="0.574" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="addcontactsfrommail" executed="True" result="Failure" success="False" time="0.568" asserts="0">
+        <results>
+          <test-suite type="TestFixture" name="TestNUnit" executed="True" result="Failure" success="False" time="0.567" asserts="0">
+            <results>
+              <test-case name="addcontactsfrommail.TestNUnit.AddItemsToListResult" executed="True" result="Error" success="False" time="0.557" asserts="0">
+                <failure>
+                  <message><![CDATA[SetUp : System.InvalidOperationException : The calling thread must be STA, because many UI components require this.]]></message>
+                  <stack-trace><![CDATA[at System.Windows.Input.InputManager..ctor()
+at System.Windows.Input.InputManager.GetCurrentInputManagerImpl()
+at System.Windows.Input.KeyboardNavigation..ctor()
+at System.Windows.FrameworkElement.FrameworkServices..ctor()
+at System.Windows.FrameworkElement.EnsureFrameworkServices()
+at System.Windows.FrameworkElement..ctor()
+at System.Windows.Controls.Control..ctor()
+at System.Windows.Controls.ContentControl..ctor()
+at System.Windows.Window..ctor()
+at addcontactsfrommail.MainWindow..ctor() in c:\Projects\addcontactsfrommail\addcontactsfrommail\MainWindow.xaml.cs:line 157
+at addcontactsfrommail.TestNUnit.CreateForm() in c:\Projects\addcontactsfrommail\addcontactsfrommail\TestNUnit.cs:line 31
+]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
