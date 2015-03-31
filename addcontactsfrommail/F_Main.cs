@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using MSOutlook = Microsoft.Office.Interop.Outlook;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
-using System.Reflection; 
+using System.Reflection;
+using System.Diagnostics; 
 #endregion
 
 namespace addcontactsfrommail
@@ -756,7 +757,7 @@ namespace addcontactsfrommail
                                 "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
-                Application.Exit();
+                Environment.Exit(-1);
             }
 
             InitializeFolderSentMail();
@@ -768,8 +769,27 @@ namespace addcontactsfrommail
         /// </summary>
         public void InitializeOutlook()
         {
-            oApp = new MSOutlook.Application();
-            oNS = oApp.GetNamespace("MAPI");
+            try
+            {
+                if (Process.GetProcessesByName("OUTLOOK").Count() > 0)
+                {
+                    // If so, use the GetActiveObject method to obtain the process and cast it to an Application object.
+                    oApp = Marshal.GetActiveObject("Outlook.Application") as MSOutlook.Application;
+                }
+                else
+                {
+                    oApp = new MSOutlook.Application();
+                }
+                oNS = oApp.GetNamespace("MAPI");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connect to MS Outlook\n\nError description:\n\n" + ex.Message,
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                Environment.Exit(-1);
+            }
         }
 
         /// <summary>

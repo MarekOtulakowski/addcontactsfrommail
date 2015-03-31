@@ -34,16 +34,16 @@
             this.L_folder = new System.Windows.Forms.Label();
             this.CB_selectedFolderWithAllSubfolders = new System.Windows.Forms.CheckBox();
             this.RB_sendFolder = new System.Windows.Forms.RadioButton();
-            this.B_otherFolder = new System.Windows.Forms.Button();
             this.RB_receiveFolder = new System.Windows.Forms.RadioButton();
             this.L_result = new System.Windows.Forms.Label();
             this.LB_result = new System.Windows.Forms.ListBox();
             this.PB_progress = new System.Windows.Forms.ProgressBar();
-            this.B_clearUpperList = new System.Windows.Forms.Button();
-            this.B_addContacts = new System.Windows.Forms.Button();
-            this.B_abort = new System.Windows.Forms.Button();
             this.BW_worker = new System.ComponentModel.BackgroundWorker();
             this.LL_projectWebsite = new System.Windows.Forms.LinkLabel();
+            this.B_abort = new System.Windows.Forms.Button();
+            this.B_otherFolder = new System.Windows.Forms.Button();
+            this.B_clearUpperList = new System.Windows.Forms.Button();
+            this.B_addContacts = new System.Windows.Forms.Button();
             this.GB_sourceMSFolder.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +59,7 @@
             this.GB_sourceMSFolder.Controls.Add(this.RB_receiveFolder);
             this.GB_sourceMSFolder.Location = new System.Drawing.Point(12, 193);
             this.GB_sourceMSFolder.Name = "GB_sourceMSFolder";
-            this.GB_sourceMSFolder.Size = new System.Drawing.Size(334, 106);
+            this.GB_sourceMSFolder.Size = new System.Drawing.Size(354, 106);
             this.GB_sourceMSFolder.TabIndex = 0;
             this.GB_sourceMSFolder.TabStop = false;
             this.GB_sourceMSFolder.Text = "Source MS Outlook folder";
@@ -86,7 +86,7 @@
             // CB_selectedFolderWithAllSubfolders
             // 
             this.CB_selectedFolderWithAllSubfolders.AutoSize = true;
-            this.CB_selectedFolderWithAllSubfolders.Location = new System.Drawing.Point(122, 56);
+            this.CB_selectedFolderWithAllSubfolders.Location = new System.Drawing.Point(147, 56);
             this.CB_selectedFolderWithAllSubfolders.Name = "CB_selectedFolderWithAllSubfolders";
             this.CB_selectedFolderWithAllSubfolders.Size = new System.Drawing.Size(181, 17);
             this.CB_selectedFolderWithAllSubfolders.TabIndex = 3;
@@ -106,20 +106,10 @@
             this.RB_sendFolder.UseVisualStyleBackColor = true;
             this.RB_sendFolder.CheckedChanged += new System.EventHandler(this.RB_sendFolder_CheckedChanged);
             // 
-            // B_otherFolder
-            // 
-            this.B_otherFolder.Location = new System.Drawing.Point(17, 52);
-            this.B_otherFolder.Name = "B_otherFolder";
-            this.B_otherFolder.Size = new System.Drawing.Size(88, 23);
-            this.B_otherFolder.TabIndex = 2;
-            this.B_otherFolder.Text = "browse folder";
-            this.B_otherFolder.UseVisualStyleBackColor = true;
-            this.B_otherFolder.Click += new System.EventHandler(this.B_otherFolder_Click);
-            // 
             // RB_receiveFolder
             // 
             this.RB_receiveFolder.AutoSize = true;
-            this.RB_receiveFolder.Location = new System.Drawing.Point(142, 29);
+            this.RB_receiveFolder.Location = new System.Drawing.Point(147, 29);
             this.RB_receiveFolder.Name = "RB_receiveFolder";
             this.RB_receiveFolder.Size = new System.Drawing.Size(128, 17);
             this.RB_receiveFolder.TabIndex = 1;
@@ -147,7 +137,7 @@
             this.LB_result.FormattingEnabled = true;
             this.LB_result.Location = new System.Drawing.Point(12, 27);
             this.LB_result.Name = "LB_result";
-            this.LB_result.Size = new System.Drawing.Size(335, 160);
+            this.LB_result.Size = new System.Drawing.Size(355, 160);
             this.LB_result.TabIndex = 4;
             // 
             // PB_progress
@@ -156,41 +146,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PB_progress.Location = new System.Drawing.Point(12, 311);
             this.PB_progress.Name = "PB_progress";
-            this.PB_progress.Size = new System.Drawing.Size(334, 23);
+            this.PB_progress.Size = new System.Drawing.Size(354, 23);
             this.PB_progress.TabIndex = 11;
-            // 
-            // B_clearUpperList
-            // 
-            this.B_clearUpperList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.B_clearUpperList.Location = new System.Drawing.Point(254, 340);
-            this.B_clearUpperList.Name = "B_clearUpperList";
-            this.B_clearUpperList.Size = new System.Drawing.Size(92, 23);
-            this.B_clearUpperList.TabIndex = 3;
-            this.B_clearUpperList.Text = "Clear result list";
-            this.B_clearUpperList.UseVisualStyleBackColor = true;
-            this.B_clearUpperList.Click += new System.EventHandler(this.B_clearUpperList_Click);
-            // 
-            // B_addContacts
-            // 
-            this.B_addContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.B_addContacts.Location = new System.Drawing.Point(12, 340);
-            this.B_addContacts.Name = "B_addContacts";
-            this.B_addContacts.Size = new System.Drawing.Size(92, 23);
-            this.B_addContacts.TabIndex = 1;
-            this.B_addContacts.Text = "Add contacts";
-            this.B_addContacts.UseVisualStyleBackColor = true;
-            this.B_addContacts.Click += new System.EventHandler(this.B_addContacts_Click);
-            // 
-            // B_abort
-            // 
-            this.B_abort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.B_abort.Location = new System.Drawing.Point(147, 340);
-            this.B_abort.Name = "B_abort";
-            this.B_abort.Size = new System.Drawing.Size(92, 23);
-            this.B_abort.TabIndex = 2;
-            this.B_abort.Text = "Abort";
-            this.B_abort.UseVisualStyleBackColor = true;
-            this.B_abort.Click += new System.EventHandler(this.B_abort_Click);
             // 
             // BW_worker
             // 
@@ -201,7 +158,7 @@
             // 
             this.LL_projectWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LL_projectWebsite.AutoSize = true;
-            this.LL_projectWebsite.Location = new System.Drawing.Point(270, 369);
+            this.LL_projectWebsite.Location = new System.Drawing.Point(290, 369);
             this.LL_projectWebsite.Name = "LL_projectWebsite";
             this.LL_projectWebsite.Size = new System.Drawing.Size(78, 13);
             this.LL_projectWebsite.TabIndex = 14;
@@ -209,11 +166,62 @@
             this.LL_projectWebsite.Text = "project website";
             this.LL_projectWebsite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LL_projectWebsite_LinkClicked);
             // 
+            // B_abort
+            // 
+            this.B_abort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.B_abort.Image = global::addcontactsfrommail.Properties.Resources.abort;
+            this.B_abort.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.B_abort.Location = new System.Drawing.Point(132, 340);
+            this.B_abort.Name = "B_abort";
+            this.B_abort.Size = new System.Drawing.Size(114, 23);
+            this.B_abort.TabIndex = 2;
+            this.B_abort.Text = "Abort";
+            this.B_abort.UseVisualStyleBackColor = true;
+            this.B_abort.Click += new System.EventHandler(this.B_abort_Click);
+            // 
+            // B_otherFolder
+            // 
+            this.B_otherFolder.Image = global::addcontactsfrommail.Properties.Resources.browse;
+            this.B_otherFolder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.B_otherFolder.Location = new System.Drawing.Point(17, 52);
+            this.B_otherFolder.Name = "B_otherFolder";
+            this.B_otherFolder.Size = new System.Drawing.Size(124, 23);
+            this.B_otherFolder.TabIndex = 2;
+            this.B_otherFolder.Text = "browse folder";
+            this.B_otherFolder.UseVisualStyleBackColor = true;
+            this.B_otherFolder.Click += new System.EventHandler(this.B_otherFolder_Click);
+            // 
+            // B_clearUpperList
+            // 
+            this.B_clearUpperList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.B_clearUpperList.Image = global::addcontactsfrommail.Properties.Resources.clear;
+            this.B_clearUpperList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.B_clearUpperList.Location = new System.Drawing.Point(253, 340);
+            this.B_clearUpperList.Name = "B_clearUpperList";
+            this.B_clearUpperList.Size = new System.Drawing.Size(114, 23);
+            this.B_clearUpperList.TabIndex = 3;
+            this.B_clearUpperList.Text = "Clear result list";
+            this.B_clearUpperList.UseVisualStyleBackColor = true;
+            this.B_clearUpperList.Click += new System.EventHandler(this.B_clearUpperList_Click);
+            // 
+            // B_addContacts
+            // 
+            this.B_addContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.B_addContacts.Image = global::addcontactsfrommail.Properties.Resources.find;
+            this.B_addContacts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.B_addContacts.Location = new System.Drawing.Point(12, 340);
+            this.B_addContacts.Name = "B_addContacts";
+            this.B_addContacts.Size = new System.Drawing.Size(114, 23);
+            this.B_addContacts.TabIndex = 1;
+            this.B_addContacts.Text = "Add contacts";
+            this.B_addContacts.UseVisualStyleBackColor = true;
+            this.B_addContacts.Click += new System.EventHandler(this.B_addContacts_Click);
+            // 
             // F_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 388);
+            this.ClientSize = new System.Drawing.Size(379, 388);
             this.Controls.Add(this.LL_projectWebsite);
             this.Controls.Add(this.B_abort);
             this.Controls.Add(this.GB_sourceMSFolder);
