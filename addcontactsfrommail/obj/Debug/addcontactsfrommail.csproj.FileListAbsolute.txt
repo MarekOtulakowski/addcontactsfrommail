@@ -18,3 +18,8 @@ C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfromma
 C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfrommail\obj\Debug\addcontactsfrommail.csproj.GenerateResource.Cache
 C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfrommail\obj\Debug\addcontactsfrommail.exe
 C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfrommail\obj\Debug\addcontactsfrommail.pdb
+C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfrommail\bin\Debug\addcontactsfrommail.exe.manifest
+C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfrommail\bin\Debug\addcontactsfrommail.application
+C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfrommail\obj\Debug\addcontactsfrommail.TrustInfo.xml
+C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfrommail\obj\Debug\addcontactsfrommail.exe.manifest
+C:\Users\Marek\Documents\GitHub\CodeGoogle\addcontactsfrommail\addcontactsfrommail\obj\Debug\addcontactsfrommail.application

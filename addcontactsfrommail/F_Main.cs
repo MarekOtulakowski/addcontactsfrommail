@@ -9,7 +9,8 @@ using System.Text;
 using System.Windows.Forms;
 using MSOutlook = Microsoft.Office.Interop.Outlook;
 using System.Linq.Expressions;
-using System.Runtime.InteropServices; 
+using System.Runtime.InteropServices;
+using System.Reflection; 
 #endregion
 
 namespace addcontactsfrommail
@@ -741,6 +742,9 @@ namespace addcontactsfrommail
         /// <param name="e">event</param>
         private void F_Main_Load(object sender, EventArgs e)
         {
+            Version version = Assembly.GetEntryAssembly().GetName().Version;
+            this.Text = this.Text + version.ToString();
+
             InitializeOutlook();
 
             bool result = true;
@@ -757,18 +761,6 @@ namespace addcontactsfrommail
 
             InitializeFolderSentMail();
             L_folderInfo.Text = folder.FullFolderPath;
-
-            ////test only
-            //TestNUnit test = new TestNUnit();
-            //test.CreateForm();
-            //test.RenameContactsName();
-
-            //test.InitializeOutlook();
-            //test.InitializeFolderInboxMail();
-            //test.GetFirstContactInfoForFirstMailInboxMail();
-            
-            //test.AddItemsToListResult();
-            ////test.ClearListResult();
         }
 
         /// <summary>
@@ -889,10 +881,7 @@ namespace addcontactsfrommail
         /// <param name="e">event</param>
         private void LL_projectWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //old project webpage
-            //System.Diagnostics.Process.Start("http://addcontactsfrommail.codeplex.com/");
-
-            System.Diagnostics.Process.Start("http://code.google.com/p/addcontactsfrommail/");
+            System.Diagnostics.Process.Start("https://github.com/MarekOtulakowski/addcontactsfrommail");
         }
 
         /// <summary>

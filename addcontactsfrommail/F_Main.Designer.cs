@@ -49,8 +49,8 @@
             // 
             // GB_sourceMSFolder
             // 
-            this.GB_sourceMSFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GB_sourceMSFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GB_sourceMSFolder.Controls.Add(this.L_folderInfo);
             this.GB_sourceMSFolder.Controls.Add(this.L_folder);
             this.GB_sourceMSFolder.Controls.Add(this.CB_selectedFolderWithAllSubfolders);
@@ -59,7 +59,7 @@
             this.GB_sourceMSFolder.Controls.Add(this.RB_receiveFolder);
             this.GB_sourceMSFolder.Location = new System.Drawing.Point(12, 193);
             this.GB_sourceMSFolder.Name = "GB_sourceMSFolder";
-            this.GB_sourceMSFolder.Size = new System.Drawing.Size(307, 106);
+            this.GB_sourceMSFolder.Size = new System.Drawing.Size(334, 106);
             this.GB_sourceMSFolder.TabIndex = 0;
             this.GB_sourceMSFolder.TabStop = false;
             this.GB_sourceMSFolder.Text = "Source MS Outlook folder";
@@ -139,30 +139,30 @@
             // 
             // LB_result
             // 
-            this.LB_result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.LB_result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LB_result.BackColor = System.Drawing.SystemColors.Window;
             this.LB_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.LB_result.FormattingEnabled = true;
             this.LB_result.Location = new System.Drawing.Point(12, 27);
             this.LB_result.Name = "LB_result";
-            this.LB_result.Size = new System.Drawing.Size(308, 160);
+            this.LB_result.Size = new System.Drawing.Size(335, 160);
             this.LB_result.TabIndex = 4;
             // 
             // PB_progress
             // 
-            this.PB_progress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.PB_progress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PB_progress.Location = new System.Drawing.Point(12, 311);
             this.PB_progress.Name = "PB_progress";
-            this.PB_progress.Size = new System.Drawing.Size(307, 23);
+            this.PB_progress.Size = new System.Drawing.Size(334, 23);
             this.PB_progress.TabIndex = 11;
             // 
             // B_clearUpperList
             // 
             this.B_clearUpperList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.B_clearUpperList.Location = new System.Drawing.Point(227, 340);
+            this.B_clearUpperList.Location = new System.Drawing.Point(254, 340);
             this.B_clearUpperList.Name = "B_clearUpperList";
             this.B_clearUpperList.Size = new System.Drawing.Size(92, 23);
             this.B_clearUpperList.TabIndex = 3;
@@ -184,7 +184,7 @@
             // B_abort
             // 
             this.B_abort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.B_abort.Location = new System.Drawing.Point(120, 340);
+            this.B_abort.Location = new System.Drawing.Point(147, 340);
             this.B_abort.Name = "B_abort";
             this.B_abort.Size = new System.Drawing.Size(92, 23);
             this.B_abort.TabIndex = 2;
@@ -201,7 +201,7 @@
             // 
             this.LL_projectWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LL_projectWebsite.AutoSize = true;
-            this.LL_projectWebsite.Location = new System.Drawing.Point(243, 369);
+            this.LL_projectWebsite.Location = new System.Drawing.Point(270, 369);
             this.LL_projectWebsite.Name = "LL_projectWebsite";
             this.LL_projectWebsite.Size = new System.Drawing.Size(78, 13);
             this.LL_projectWebsite.TabIndex = 14;
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 388);
+            this.ClientSize = new System.Drawing.Size(359, 388);
             this.Controls.Add(this.LL_projectWebsite);
             this.Controls.Add(this.B_abort);
             this.Controls.Add(this.GB_sourceMSFolder);
@@ -224,9 +224,9 @@
             this.Controls.Add(this.B_addContacts);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "F_Main";
-            this.Text = "Add Contacts From Mail v.1.0.0.5";
-            this.Load += new System.EventHandler(this.F_Main_Load);
+            this.Text = "Add Contacts From Mail v.";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.F_Main_FormClosing);
+            this.Load += new System.EventHandler(this.F_Main_Load);
             this.GB_sourceMSFolder.ResumeLayout(false);
             this.GB_sourceMSFolder.PerformLayout();
             this.ResumeLayout(false);
